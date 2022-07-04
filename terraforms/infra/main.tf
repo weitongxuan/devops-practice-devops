@@ -30,7 +30,7 @@ resource "helm_release" "ingress" {
 
 
 resource "azurerm_storage_account" "example" {
-  name                     = "devopsteststorage"
+  name                     = "devopsteststorageLinker"
   location                 = data.azurerm_resource_group.this.location
   resource_group_name      = data.azurerm_resource_group.this.name
   account_tier             = "Standard"
