@@ -15,4 +15,5 @@ jobs:
         script: |
          docker run -v $(pwd):/src hashicorp/terraform:latest -chdir=/src init
          docker run -v $(pwd):/src hashicorp/terraform:latest -chdir=/src plan -out terraform.plan
+         docker run -v $(pwd):/src hashicorp/terraform:latest apply -out terraform.plan
         workingDirectory: 'terraforms/infra'
