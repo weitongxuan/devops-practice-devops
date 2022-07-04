@@ -14,5 +14,5 @@ jobs:
         targetType: 'inline'
         script: |
          docker run -v $(pwd):/src hashicorp/terraform:latest -chdir=/src init
-         docker run -v $(pwd):/src hashicorp/terraform:latest -chdir=/src plan -o terraform.plan
+         docker run -v $(pwd):/src hashicorp/terraform:latest -chdir=/src plan -out terraform.plan
         workingDirectory: 'terraforms/infra'
