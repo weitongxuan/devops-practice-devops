@@ -1,5 +1,8 @@
 provider "azurerm" {
   features {}
+  client_id     = "2ece286a-ffcc-4e96-9e01-2359c9e3c81b"
+  client_secret = "LFS8Q~ilUxGeuLPNSW_z14UjwTROs-booAhqAcxP"
+  tenant_id     = "2cf4248e-4836-4202-b796-9a1589ff4613"
 }
 
 provider "kubernetes" {
