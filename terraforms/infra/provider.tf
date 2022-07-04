@@ -1,8 +1,10 @@
 provider "azurerm" {
   features {}
-  client_id     = "2ece286a-ffcc-4e96-9e01-2359c9e3c81b"
-  client_secret = "LFS8Q~ilUxGeuLPNSW_z14UjwTROs-booAhqAcxP"
-  tenant_id     = "2cf4248e-4836-4202-b796-9a1589ff4613"
+
+  client_id       = "2ece286a-ffcc-4e96-9e01-2359c9e3c81b"
+  client_secret   = "LFS8Q~ilUxGeuLPNSW_z14UjwTROs-booAhqAcxP"
+  tenant_id       = "2cf4248e-4836-4202-b796-9a1589ff4613"
+  subscription_id = "091725d9-aeba-4638-8faf-d0e81a03a93d"
 }
 
 provider "kubernetes" {
@@ -29,5 +31,15 @@ terraform {
     storage_account_name = "linkerterraformstates"
     container_name       = "practice"
     key                  = "terraform.tfstate"
+    client_id            = "2ece286a-ffcc-4e96-9e01-2359c9e3c81b"
+    client_secret        = "LFS8Q~ilUxGeuLPNSW_z14UjwTROs-booAhqAcxP"
+    tenant_id            = "2cf4248e-4836-4202-b796-9a1589ff4613"
+    subscription_id      = "091725d9-aeba-4638-8faf-d0e81a03a93d"
+  }
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "=3.0.0"
+    }
   }
 }

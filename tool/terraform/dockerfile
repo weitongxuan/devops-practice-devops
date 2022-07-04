@@ -1,0 +1,6 @@
+FROM ubuntu:20.04 as install-az
+RUN apt-get update && apt install -y curl unzip
+RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
+RUN curl https://releases.hashicorp.com/terraform/1.2.4/terraform_1.2.4_linux_amd64.zip --output terraform.zip
+RUN unzip terraform.zip -d /usr/bin/
+CMD [ "bash" ]
