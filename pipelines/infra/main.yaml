@@ -8,7 +8,6 @@ pr: none
 
 jobs:
   - job: terraform
-    container: terraform
     steps:
     - task: Bash@3
       inputs:
