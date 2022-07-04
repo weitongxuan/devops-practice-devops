@@ -13,6 +13,6 @@ jobs:
       inputs:
         targetType: 'inline'
         script: |
-         docker run -v ./:/src hashicorp/terraform:latest -chdir=/src init
-         docker run -v ./:/src hashicorp/terraform:latest -chdir=/src plan
+         docker run -v $(pwd):/src hashicorp/terraform:latest -chdir=/src init
+         docker run -v $(pwd):/src hashicorp/terraform:latest -chdir=/src plan -o terraform.plan
         workingDirectory: 'terraforms/infra'
