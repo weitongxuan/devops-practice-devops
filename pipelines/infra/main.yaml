@@ -12,5 +12,5 @@ jobs:
     - task: Bash@3
       inputs:
         targetType: 'inline'
-        script: 'docker run hashicorp/terraform:latest terraform plan'
+        script: 'docker run hashicorp/terraform:latest plan'
         workingDirectory: 'terraforms/infra'
