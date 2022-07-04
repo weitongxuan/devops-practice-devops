@@ -1,19 +1,22 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+resources:
+ containers:
+   - container: terraform
+     image: hashicorp/terraform
+     options: --entrypoint=""
+
 
 trigger: none
 pr: none
 
 jobs:
   - job: terraform
+    container: terraform
     steps:
     - task: Bash@3
       inputs:
         targetType: 'inline'
         script: |
-         docker run -v $(pwd):/src hashicorp/terraform:latest -chdir=/src init
-         docker run -v $(pwd):/src hashicorp/terraform:latest -chdir=/src plan -out terraform.plan
-         docker run -v $(pwd):/src hashicorp/terraform:latest apply terraform.plan
+         terraform init
+         terraform plan -out terraform.plan
+         terraform apply -f terraform.plan
         workingDirectory: 'terraforms/infra'
