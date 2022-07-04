@@ -3,12 +3,6 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-resources:
- containers:
-   - container: terraform
-     image: hashicorp/terraform:latest
-     options: --entrypoint=""
-
 trigger: none
 pr: none
 
@@ -19,5 +13,5 @@ jobs:
     - task: Bash@3
       inputs:
         targetType: 'inline'
-        script: 'terraform plan'
+        script: 'docker run hashicorp/terraform:latest terraform plan'
         workingDirectory: 'terraforms/infra'
