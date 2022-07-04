@@ -7,13 +7,11 @@ trigger: none
 pr: none
 
 jobs:
-  - job:
-    
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+  - job: terraform
+    container: hashicorp/terraform:latest
+    steps:
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: 'terraform plan'
+        workingDirectory: 'terraforms/infra'
