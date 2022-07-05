@@ -4,7 +4,7 @@ data "azurerm_resource_group" "this" {
 }
 
 data "azurerm_container_registry" "acr" {
-  name                = "devopstestcr1.azurecr.io"
+  name                = "devopstestcr1"
   resource_group_name = "rg-devops-dev-001"
 }
 
