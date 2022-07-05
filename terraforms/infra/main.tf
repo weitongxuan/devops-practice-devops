@@ -3,6 +3,11 @@ data "azurerm_resource_group" "this" {
   name = "rg-devops-dev-001"
 }
 
+data "azurerm_container_registry" "acr" {
+  name                = "devopstestcr1.azurecr.io"
+  resource_group_name = "rg-devops-dev-001"
+}
+
 resource "azurerm_kubernetes_cluster" "aks" {
   name                = "example-aks1"
   location            = data.azurerm_resource_group.this.location
@@ -18,6 +23,12 @@ resource "azurerm_kubernetes_cluster" "aks" {
   identity {
     type = "SystemAssigned"
   }
+}
+
+resource "azurerm_role_assignment" "aks_acr" {
+  scope                = data.azurerm_container_registry.acr.id
+  role_definition_name = "AcrPull"
+  principal_id         = azurerm_kubernetes_cluster.aks.identity[0].principal_id
 }
 
 resource "helm_release" "ingress" {

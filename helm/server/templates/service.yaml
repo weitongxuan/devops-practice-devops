@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name:  server
+spec:
+  selector:
+    app:  server
+  type:  ClusterIP
+  ports:
+  - name:  port
+    port:  8000
+    targetPort:  8000
