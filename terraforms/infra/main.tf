@@ -9,7 +9,7 @@ data "azurerm_container_registry" "acr" {
 }
 
 resource "azurerm_kubernetes_cluster" "aks" {
-  name                = "example-aks1"
+  name                = "practice-aks-${var.suffix}"
   location            = data.azurerm_resource_group.this.location
   resource_group_name = data.azurerm_resource_group.this.name
   dns_prefix          = "devops-practice"
@@ -41,7 +41,7 @@ resource "helm_release" "ingress" {
 
 
 resource "azurerm_storage_account" "example" {
-  name                     = "devopsteststoragelinker"
+  name                     = "devopsteststoragelinker${var.suffix}"
   location                 = data.azurerm_resource_group.this.location
   resource_group_name      = data.azurerm_resource_group.this.name
   account_tier             = "Standard"
